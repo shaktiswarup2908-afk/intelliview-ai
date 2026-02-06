@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pymongo
+python-jose
+passlib[bcrypt]
+sentence-transformers
+scikit-learn
+opencv-python
