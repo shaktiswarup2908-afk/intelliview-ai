@@ -1,1 +1,8 @@
+nervousness = detect_nervousness(req.answer)
 
+return {
+    "score": score,
+    "confidence": confidence,
+    "nervousness": nervousness,
+    "feedback": "Good structure, improve clarity and confidence."
+}
