@@ -21,3 +21,13 @@ async function loadQuestion() {
 }
 
 window.onload = loadQuestion
+function startSpeech() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)()
+  recognition.lang = "en-US"
+  recognition.start()
+
+  recognition.onresult = function (event) {
+    document.getElementById("answer").value =
+      event.results[0][0].transcript
+  }
+}
