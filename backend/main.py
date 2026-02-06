@@ -26,3 +26,16 @@ def analyze_answer(req: AnswerRequest):
         "confidence": confidence,
         "feedback": "Good structure, improve clarity and confidence."
     }
+HR_QUESTIONS = [
+    "Tell me about yourself.",
+    "What are your strengths and weaknesses?",
+    "Why should we hire you?",
+    "Explain a challenging situation you handled.",
+    "Where do you see yourself in 5 years?"
+]
+
+@app.get("/get-question")
+def get_question():
+    return {
+        "question": random.choice(HR_QUESTIONS)
+    }
