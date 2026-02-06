@@ -1,21 +1,28 @@
-
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from auth import router as auth_router
-from interview import router as interview_router
+from pydantic import BaseModel
+import random
 
-app = FastAPI(title="IntelliView AI")
+app = FastAPI()
 
+# ✅ CORS FIX (CRITICAL)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
-app.include_router(auth_router)
-app.include_router(interview_router)
+class AnswerRequest(BaseModel):
+    answer: str
 
-@app.get("/")
-def root():
-    return {"status": "IntelliView Backend Running"}
+@app.post("/analyze-answer")
+def analyze_answer(req: AnswerRequest):
+    score = random.randint(60, 90)
+    confidence = random.choice(["Low", "Medium", "High"])
+
+    return {
+        "score": score,
+        "confidence": confidence,
+        "feedback": "Good structure, improve clarity and confidence."
+    }
