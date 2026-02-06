@@ -14,3 +14,10 @@ async function submitAnswer() {
   document.getElementById("result").innerText =
     JSON.stringify(data, null, 2)
 }
+async function loadQuestion() {
+  const res = await fetch(`${API_BASE_URL}/get-question`)
+  const data = await res.json()
+  document.getElementById("question").innerText = data.question
+}
+
+window.onload = loadQuestion
