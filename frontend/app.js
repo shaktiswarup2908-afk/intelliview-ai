@@ -1,5 +1,3 @@
-// frontend/app.js
-
 const API_BASE_URL = "https://intelliview-backend.onrender.com"
 
 async function submitAnswer() {
@@ -14,5 +12,5 @@ async function submitAnswer() {
   const data = await response.json()
 
   document.getElementById("result").innerText =
-    `Score: ${data.score}\nConfidence: ${data.confidence}`
+    JSON.stringify(data, null, 2)
 }
